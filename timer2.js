@@ -3,15 +3,13 @@ const stdin = process.stdin;
 stdin.setRawMode(true);
 stdin.setEncoding('utf8');
 stdin.on('data', (key) => {
-  if (key === 'b') {
-    process.stdout.write('\x07');
-  } else if (key <= '9' && key >= '1') {
+  if (key === 'b') process.stdout.write('\x07');
+  else if (key <= '9' && key >= '1') {
     setTimeout(() => {
       process.stdout.write('\x07');
     }, parseInt(key) * 1000);
-  } else if (key === '\u0003') {
-    process.exit();
-  } else {
-    console.log('Please try again');
-  }
+  } else if (key === '\u0003') process.exit();
+  else console.log('please try again');
 });
+
+
